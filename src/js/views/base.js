@@ -5,6 +5,7 @@ DOM.searchInput = $(".search__field");
 DOM.searchForm = $(".search");
 DOM.searchRes = $(".results");
 DOM.searchResList = $(".results__list");
+DOM.searchResPages = $(".results__pages");
 
 // DOM strings
 export const DOMStrings = {};

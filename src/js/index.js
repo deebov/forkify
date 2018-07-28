@@ -40,3 +40,15 @@ DOM.searchForm.addEventListener("submit", e => {
   e.preventDefault();
   controlSearch();
 });
+
+DOM.searchResPages.addEventListener('click', function(e) {
+  
+  const btn = e.target.closest('.btn-inline');
+  
+  if (btn) {
+    const page = btn.dataset.goto;
+    searchView.clearResults();
+    searchView.renderResults(state.search.result, +page);
+  }
+  
+});

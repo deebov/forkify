@@ -1,4 +1,5 @@
 import axios from "axios";
+import { key, proxy } from "./config";
 
 export default class Search {
   constructor(query) {
@@ -6,10 +7,6 @@ export default class Search {
   }
 
   async getResults() {
-    // PROXY URL
-    const proxy = "https://thingproxy.freeboard.io/fetch/";
-    // API ACCESS KEY
-    const key = "32f9e7e11f71ce1bcfac73b51c042b49";
     try {
       // GET DATA
       const result = await axios(
@@ -17,7 +14,8 @@ export default class Search {
       );
       this.result = result.data.recipes;
     } catch (err) {
-      alert(err);
+      console.log(err);
+      alert("Something went wrong :(");
     }
   }
 }

@@ -8,6 +8,8 @@ DOM.searchResList = $('.results__list');
 DOM.searchResPages = $('.results__pages');
 DOM.recipe = $('.recipe');
 DOM.shopping = $('.shopping__list');
+DOM.likesMenu = $('.likes__field');
+DOM.likesList = $('.likes__list');
 
 // DOM strings
 export const DOMStrings = {};

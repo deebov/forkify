@@ -1,10 +1,10 @@
-import { DOM } from "./base";
+import { DOM } from './base';
 // Function to get the search input value
 export const getInput = () => DOM.searchInput.value;
 // Function to truncate a recipe title
 const trunc = (str, limit) => {
   if (str.length > limit) {
-    return str.slice(0, limit > 3 ? limit - 3 : limit) + "...";
+    return str.slice(0, limit > 3 ? limit - 3 : limit) + '...';
   }
   return str;
 };
@@ -24,7 +24,7 @@ const renderRecipe = recipe => {
       </a>
     </li>`;
   // Insert the markup to the results list
-  DOM.searchResList.insertAdjacentHTML("beforeend", markup);
+  DOM.searchResList.insertAdjacentHTML('beforeend', markup);
 };
 // Function to render results
 export const renderResults = (recipes, page = 1, resPerPage = 10) => {
@@ -39,11 +39,13 @@ export const renderResults = (recipes, page = 1, resPerPage = 10) => {
 
 // Function to create the pagination button
 const createButton = (page, type) => `
-                    <button class="btn-inline results__btn--${type}" data-goto="${type === "prev" ? page - 1 : page + 1}">
-                      <span>Page ${type === "prev" ? page - 1 : page + 1}</span>
+                    <button class="btn-inline results__btn--${type}" data-goto="${
+  type === 'prev' ? page - 1 : page + 1
+}">
+                      <span>Page ${type === 'prev' ? page - 1 : page + 1}</span>
                       <svg class="search__icon">
                           <use href="img/icons.svg#icon-triangle-${
-                            type === "prev" ? "left" : "right"
+                            type === 'prev' ? 'left' : 'right'
                           }"></use>
                       </svg>
                     </button>`;
@@ -51,27 +53,27 @@ const createButton = (page, type) => `
 const renderButtons = (page, numResults, resPerPage) => {
   // Calculate all pages
   const pages = Math.ceil(numResults / resPerPage);
-  let button = "";
+  let button = '';
   if (page === 1 && pages > 1) {
     // Only button to go next page
-    button = createButton(page, "next");
+    button = createButton(page, 'next');
   } else if (page < pages) {
     // Both buttons
     button = `
-      ${createButton(page, "prev")}
-      ${createButton(page, "next")}
+      ${createButton(page, 'prev')}
+      ${createButton(page, 'next')}
     `;
   } else if (page === pages && page > 1) {
     // Only button to go next page
-    button = createButton(page, "prev");
+    button = createButton(page, 'prev');
   }
 
-  DOM.searchResPages.insertAdjacentHTML("afterbegin", button);
+  DOM.searchResPages.insertAdjacentHTML('afterbegin', button);
 };
 // Function to clear the search input
-export const clearInput = () => (DOM.searchInput.value = "");
+export const clearInput = () => (DOM.searchInput.value = '');
 // Function to clear the results list
 export const clearResults = () => {
-  DOM.searchResList.innerHTML = "";
-  DOM.searchResPages.innerHTML = "";
+  DOM.searchResList.innerHTML = '';
+  DOM.searchResPages.innerHTML = '';
 };

@@ -1,5 +1,5 @@
-import axios from "axios";
-import { key, proxy } from "./config";
+import axios from 'axios';
+import { key, proxy } from './config';
 
 export default class Search {
   constructor(query) {
@@ -15,7 +15,7 @@ export default class Search {
       this.result = result.data.recipes;
     } catch (err) {
       console.log(err);
-      alert("Something went wrong :(");
+      alert('Something went wrong :(');
     }
   }
 }

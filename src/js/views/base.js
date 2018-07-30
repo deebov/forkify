@@ -1,16 +1,16 @@
 // DOM elements
 export const DOM = {};
 
-DOM.searchInput = $(".search__field");
-DOM.searchForm = $(".search");
-DOM.searchRes = $(".results");
-DOM.searchResList = $(".results__list");
-DOM.searchResPages = $(".results__pages");
+DOM.searchInput = $('.search__field');
+DOM.searchForm = $('.search');
+DOM.searchRes = $('.results');
+DOM.searchResList = $('.results__list');
+DOM.searchResPages = $('.results__pages');
 
 // DOM strings
 export const DOMStrings = {};
 
-DOMStrings.loader = "loader";
+DOMStrings.loader = 'loader';
 
 // Function to select DOM elements
 function $(selector) {
@@ -26,7 +26,7 @@ export const renderLoader = parent => {
             </svg>
           </div>`;
 
-  parent.insertAdjacentHTML("afterbegin", loader);
+  parent.insertAdjacentHTML('afterbegin', loader);
 };
 
 export const clearLoader = parent => {

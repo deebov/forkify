@@ -7,6 +7,7 @@ DOM.searchRes = $('.results');
 DOM.searchResList = $('.results__list');
 DOM.searchResPages = $('.results__pages');
 DOM.recipe = $('.recipe');
+DOM.shopping = $('.shopping__list');
 
 // DOM strings
 export const DOMStrings = {};

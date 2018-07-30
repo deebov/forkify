@@ -23,7 +23,7 @@ import * as likesView from './views/likesView';
  * - Liked recipes
  */
 const state = {};
-window.state = state;
+
 /**
  * SEARCH CONTROLLER
  */
@@ -57,6 +57,17 @@ const controlSearch = async () => {
     }
   }
 };
+
+// Restore liked recipes on page load
+window.addEventListener('load', function() {
+  state.likes = new Likes();
+  // Restore likes
+  state.likes.readStorage();
+  // Toggle the like menu
+  likesView.toggleLikeMenu(state.likes.getNumLikes());
+  // Render the existing likes
+  state.likes.likes.forEach(like => likesView.renderLike(like));
+});
 
 DOM.searchForm.addEventListener('submit', e => {
   e.preventDefault();
@@ -159,6 +170,7 @@ const controlLike = () => {
       state.recipe.author,
       state.recipe.img
     );
+    state.likes.persistData();
     // Toggle the like button
     likesView.toggleLikeBtn(true);
 

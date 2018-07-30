@@ -1,4 +1,4 @@
-import { DOM } from './base';
+import { DOM, DOMStrings } from './base';
 // Function to get the search input value
 export const getInput = () => DOM.searchInput.value;
 // Function to truncate a recipe title
@@ -18,7 +18,7 @@ const renderRecipe = recipe => {
               <img src="${recipe.image_url}" alt="${recipe.title}">
           </figure>
           <div class="results__data">
-              <h4 class="results__name">${trunc(recipe.title, 25)}</h4>
+              <h4 class="results__name">${trunc(recipe.title, 23)}</h4>
               <p class="results__author">${recipe.publisher}</p>
           </div>
       </a>
@@ -35,6 +35,17 @@ export const renderResults = (recipes, page = 1, resPerPage = 10) => {
 
   recipes.slice(begin, end).forEach(renderRecipe);
   renderButtons(page, recipes.length, resPerPage);
+};
+
+// Function to highlight an active search item
+export const highlightSelected = id => {
+  const link = document.querySelector(`.${DOMStrings.searchLinkActive}`);
+
+  if (link) link.classList.remove(DOMStrings.searchLinkActive);
+
+  document
+    .querySelector(`a[href*="#${id}"]`)
+    .classList.add(DOMStrings.searchLinkActive);
 };
 
 // Function to create the pagination button

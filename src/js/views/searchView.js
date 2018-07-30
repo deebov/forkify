@@ -2,7 +2,7 @@ import { DOM, DOMStrings } from './base';
 // Function to get the search input value
 export const getInput = () => DOM.searchInput.value;
 // Function to truncate a recipe title
-const trunc = (str, limit) => {
+export const trunc = (str, limit) => {
   if (str.length > limit) {
     return str.slice(0, limit > 3 ? limit - 3 : limit) + '...';
   }
@@ -39,13 +39,13 @@ export const renderResults = (recipes, page = 1, resPerPage = 10) => {
 
 // Function to highlight an active search item
 export const highlightSelected = id => {
+  // Delete active link class if it is
   const link = document.querySelector(`.${DOMStrings.searchLinkActive}`);
-
   if (link) link.classList.remove(DOMStrings.searchLinkActive);
-
-  document
-    .querySelector(`a[href*="#${id}"]`)
-    .classList.add(DOMStrings.searchLinkActive);
+  // Add active link class
+  const activeLink = document.querySelector(`.results__link[href*="#${id}"]`);
+  if(activeLink) activeLink.classList.add(DOMStrings.searchLinkActive);
+    
 };
 
 // Function to create the pagination button

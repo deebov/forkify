@@ -58,17 +58,6 @@ const controlSearch = async () => {
   }
 };
 
-// Restore liked recipes on page load
-window.addEventListener('load', function() {
-  state.likes = new Likes();
-  // Restore likes
-  state.likes.readStorage();
-  // Toggle the like menu
-  likesView.toggleLikeMenu(state.likes.getNumLikes());
-  // Render the existing likes
-  state.likes.likes.forEach(like => likesView.renderLike(like));
-});
-
 DOM.searchForm.addEventListener('submit', e => {
   e.preventDefault();
   controlSearch();
@@ -111,7 +100,7 @@ const controlRecipe = async () => {
       state.recipe.calcServings();
       // Render recipe
       clearLoader(DOM.recipe);
-      recipeView.renderRecipe(state.recipe);
+      recipeView.renderRecipe(state.recipe, state.likes.isLiked(id));
     } catch (err) {
       console.log(err);
 
@@ -187,6 +176,19 @@ const controlLike = () => {
 
   likesView.toggleLikeMenu(state.likes.getNumLikes());
 };
+
+
+// Restore liked recipes on page load
+window.addEventListener('load', function() {
+  state.likes = new Likes();
+  // Restore likes
+  state.likes.readStorage();
+  // Toggle the like menu
+  likesView.toggleLikeMenu(state.likes.getNumLikes());
+  // Render the existing likes
+  state.likes.likes.forEach(like => likesView.renderLike(like, ));
+});
+
 
 DOM.recipe.addEventListener('click', function(e) {
   if (e.target.matches('.btn-decrease, .btn-decrease *')) {

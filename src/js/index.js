@@ -118,7 +118,8 @@ window.addEventListener('load', controlRecipe);
 
 const controlList = () => {
   if (!state.list) state.list = new List();
-
+  console.log(state.list);
+  
   // Add each ingredient to the list and UI
   state.recipe.ingredients.forEach(el => {
     const item = state.list.addItem(el.count, el.unit, el.ingredient);
@@ -201,7 +202,7 @@ DOM.recipe.addEventListener('click', function(e) {
     // Increase button is clicked
     state.recipe.updateServings('inc');
     recipeView.updataServings(state.recipe);
-  } else if (e.target.matches('.recipe__btn--add, .recipe__btn--add')) {
+  } else if (e.target.matches('.recipe__btn, .recipe__btn *')) {
     // Add ingredients to shopping list
     controlList();
   } else if (e.target.matches('.recipe__love, .recipe__love *')) {
